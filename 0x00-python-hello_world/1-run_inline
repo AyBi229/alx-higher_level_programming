@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ -z "$PYCODE" ]; then
+    echo "Error: 'PYCODE' is not set."
+    exit 1
+fi
+
+# Creating a temporary Python file
+TMP_PYFILE=$(mktemp)
+echo "$PYCODE" > "$TMP_PYFILE"
+
+python3 "$TMP_PYFILE"
+
+# Cleaning up the temporary Python file
+rm "$TMP_PYFILE"
